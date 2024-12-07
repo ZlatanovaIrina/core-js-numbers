@@ -633,8 +633,14 @@ function getHypotenuse(a, b) {
  * 10 => 5
  * 15 => 8
  */
-function getCountOfOddNumbers(/* number */) {
-  throw new Error('Not implemented');
+function getCountOfOddNumbers(number) {
+  if (number === 0) {
+    return 0;
+  }
+  const numberAbs = Math.abs(number);
+  return number % 2 === 0
+    ? getCountOfOddNumbers(numberAbs - 1)
+    : 1 + getIntegerOnString(getCountOfOddNumbers(numberAbs - 1), 10);
 }
 
 module.exports = {
